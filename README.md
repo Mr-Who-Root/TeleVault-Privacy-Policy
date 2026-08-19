@@ -1,6 +1,6 @@
 # TeleVault - Privacy Policy Website
 
-Official privacy policy website for **TeleVault**, developed by **Govind S R**.
+Official privacy policy website for **TeleVault (Free & Pro Editions)**, developed by **Govind S R**.
 
 Hosted on GitHub Pages: [https://govindsr.github.io/TeleVault-Privacy-Policy](https://govindsr.github.io/TeleVault-Privacy-Policy)
 
