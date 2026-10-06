@@ -11,35 +11,45 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // 2. Theme Toggle (Dark / Light)
+  // Follows the system setting (like the app) until the visitor picks one.
   const themeToggle = document.getElementById('themeToggle');
-  const storedTheme = localStorage.getItem('televault_theme');
-  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const darkQuery = window.matchMedia('(prefers-color-scheme: dark)');
 
-  function setTheme(theme) {
-    document.documentElement.setAttribute('data-theme', theme);
-    localStorage.setItem('televault_theme', theme);
-    if (themeToggle) {
-      themeToggle.innerHTML = theme === 'light' 
-        ? '<i class="fa-solid fa-moon"></i>' 
-        : '<i class="fa-solid fa-sun"></i>';
-      themeToggle.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`);
+  function storedTheme() {
+    try {
+      const t = localStorage.getItem('televault_theme');
+      return t === 'light' || t === 'dark' ? t : null;
+    } catch (e) {
+      return null;
     }
   }
 
-  if (storedTheme) {
-    setTheme(storedTheme);
-  } else if (!prefersDark) {
-    // If system defaults to light mode and no preference is stored
-    setTheme('dark'); // TeleVault looks best with dark theme by default, but respects toggle
-  } else {
-    setTheme('dark');
+  function currentTheme() {
+    return storedTheme() || (darkQuery.matches ? 'dark' : 'light');
   }
+
+  function renderToggle(theme) {
+    if (!themeToggle) return;
+    themeToggle.innerHTML = theme === 'light'
+      ? '<i class="fa-solid fa-moon"></i>'
+      : '<i class="fa-solid fa-sun"></i>';
+    themeToggle.setAttribute('aria-label', `Switch to ${theme === 'light' ? 'dark' : 'light'} mode`);
+  }
+
+  function setTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    try { localStorage.setItem('televault_theme', theme); } catch (e) {}
+    renderToggle(theme);
+  }
+
+  renderToggle(currentTheme());
+  darkQuery.addEventListener?.('change', () => {
+    if (!storedTheme()) renderToggle(currentTheme());
+  });
 
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      setTheme(newTheme);
+      setTheme(currentTheme() === 'dark' ? 'light' : 'dark');
     });
   }
 

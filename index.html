@@ -10,11 +10,27 @@
   <meta property="og:title" content="Privacy Policy - TeleVault">
   <meta property="og:description" content="TeleVault is built with a privacy-first, on-device architecture. No intermediary servers, no trackers, direct MTProto connection to Telegram.">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://mr-who-root.github.io/TeleVault-Privacy-Policy/assets/icon-512.png">
+  <meta name="theme-color" content="#12182B" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#EDE6D6" media="(prefers-color-scheme: light)">
+
+  <!-- App icon -->
+  <link rel="icon" type="image/svg+xml" href="assets/icon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon-32.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <!-- Apply the saved theme before first paint to avoid a flash -->
+  <script>
+    try {
+      var t = localStorage.getItem('televault_theme');
+      if (t === 'light' || t === 'dark') document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  </script>
   
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
   
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -22,17 +38,11 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <!-- Ambient background glow -->
-  <div class="bg-glow bg-glow-1"></div>
-  <div class="bg-glow bg-glow-2"></div>
-
   <!-- Header / Navigation -->
   <header class="site-header">
     <div class="container header-container">
       <div class="brand">
-        <div class="brand-icon">
-          <i class="fa-solid fa-shield-halved"></i>
-        </div>
+        <img class="brand-icon" src="assets/icon.svg" width="40" height="40" alt="TeleVault app icon">
         <div class="brand-text">
           <span class="app-name">TeleVault</span>
           <span class="dev-badge">by Govind S R</span>
@@ -51,8 +61,9 @@
     <div class="container">
       <!-- Hero Section -->
       <section class="hero-section">
+        <img class="hero-icon" src="assets/icon.svg" width="88" height="88" alt="">
         <div class="badge-pill">
-          <span class="pulse-dot"></span>
+          <span class="status-dot"></span>
           <span>Zero Server Architecture &bull; 100% On-Device</span>
         </div>
         <h1 class="hero-title">Privacy Policy</h1>
