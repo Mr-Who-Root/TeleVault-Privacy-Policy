@@ -314,7 +314,14 @@
                     <span class="perm-icon"><i class="fa-brands fa-telegram"></i></span>
                     <h4>Your private TeleVault Data channel</h4>
                   </div>
-                  <p>So that a new phone or a reinstall gets everything back, TeleVault keeps your vault list, file list, settings, notes and voice notes, contacts backups (only if you use them), the details found for your videos, and your encryption key backup (sealed with your recovery passphrase) in a private, archived channel in <em>your own</em> Telegram account. It is governed by Telegram's Privacy Policy, and we have no access to it.</p>
+                  <p>So that a new phone or a reinstall gets everything back, TeleVault keeps your vault list, file list, settings, notes and voice notes, contacts backups (only if you use them), the details found for your videos, and your encryption key backup (sealed with your recovery passphrase) in a private, archived channel in <em>your own</em> Telegram account. It is governed by Telegram's Privacy Policy, and we have no access to it. When you sign in, TeleVault looks for this channel to put your vaults and files back. If there isn't one, it looks for the Cloud list backup an earlier version saved in a chat you picked, and failing that rebuilds your file list from the descriptions TeleVault left on your backed-up files. This happens between your device and Telegram; nothing is sent to us.</p>
+                </div>
+                <div class="permission-card">
+                  <div class="perm-header">
+                    <span class="perm-icon"><i class="fa-solid fa-lock"></i></span>
+                    <h4>Optional file encryption</h4>
+                  </div>
+                  <p>If you turn on encryption for a vault or an upload, files are encrypted with AES-256 on your device before they are sent, under a random name, and their descriptions are encrypted too, so neither Telegram nor we can read them. The key stays on your device; the copy in your TeleVault Data channel is sealed with a recovery passphrase that only you know and that cannot be reset.</p>
                 </div>
                 <div class="permission-card">
                   <div class="perm-header">
@@ -328,7 +335,14 @@
                     <span class="perm-icon"><i class="fa-solid fa-microchip"></i></span>
                     <h4>On-device processing</h4>
                   </div>
-                  <p>Smart search (finding photos by what's in them or by the text in them) and the document scanner use Google ML Kit, which works on your device; your photos and scans are not sent to us or used by us.</p>
+                  <p>Smart search (finding photos by what's in them or by the text in them) and the document scanner use Google ML Kit, which works on your device; your photos and scans are not sent to us or used by us. To do this, TeleVault makes a smaller, temporary copy of each photo on your device and deletes it straight after.</p>
+                </div>
+                <div class="permission-card">
+                  <div class="perm-header">
+                    <span class="perm-icon"><i class="fa-solid fa-file-lines"></i></span>
+                    <h4>Device logs</h4>
+                  </div>
+                  <p>TeleVault 2.0 keeps the Telegram library's own diagnostic log on your device to errors only, so it does not record details of your account or files.</p>
                 </div>
                 <div class="permission-card">
                   <div class="perm-header">
